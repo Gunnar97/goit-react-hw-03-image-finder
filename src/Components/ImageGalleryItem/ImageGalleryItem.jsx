@@ -5,8 +5,12 @@ const ImageGalleryItem = props => {
     props.handleModal(props.item.id, props.item.largeImageURL, props.item.tags);
   };
   return (
-    <li className="gallery-item" onClick={onImageGalleryItemClick}>
-      <img src={props.item.webformatURL} alt={props.item.tags} />
+    <li className="imageGalleryItem" onClick={onImageGalleryItemClick}>
+      <img
+        className="imageGalleryItem-image"
+        src={props.item.webformatURL}
+        alt={props.item.tags}
+      />
     </li>
   );
 };

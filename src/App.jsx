@@ -75,7 +75,7 @@ class App extends Component {
     const { images, isOpen, currentImage, loading, tags, totalHits } =
       this.state;
     return (
-      <div>
+      <div className="app">
         <SearchBar setQuery={this.setQuery} />
         {images.length ? (
           <>

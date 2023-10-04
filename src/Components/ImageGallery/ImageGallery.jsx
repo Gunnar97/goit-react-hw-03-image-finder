@@ -7,7 +7,7 @@ const ImageGallery = ({ imagesToView, handleModal }) => {
       <ImageGalleryItem item={item} handleModal={handleModal} key={item.id} />
     );
   });
-  return <ul className="gallery">{gallery}</ul>;
+  return <ul className="imageGallery">{gallery}</ul>;
 };
 
 // FilterByName.propTypes = {
