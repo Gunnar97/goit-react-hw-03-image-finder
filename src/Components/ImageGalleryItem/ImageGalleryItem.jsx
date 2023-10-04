@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ImageGalleryItem = props => {
   const onImageGalleryItemClick = () => {
@@ -15,8 +16,8 @@ const ImageGalleryItem = props => {
   );
 };
 
-// FilterByName.propTypes = {
-//   onFilterChange: PropTypes.func.isRequired,
-//   filterValue: PropTypes.string.isRequired,
-// };
+ImageGalleryItem.propTypes = {
+  handleModal: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired,
+};
 export default ImageGalleryItem;

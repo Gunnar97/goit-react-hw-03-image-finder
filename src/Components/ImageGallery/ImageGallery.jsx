@@ -1,5 +1,6 @@
 import ImageGalleryItem from 'Components/ImageGalleryItem/ImageGalleryItem';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ImageGallery = ({ imagesToView, handleModal }) => {
   const gallery = imagesToView.map(item => {
@@ -10,8 +11,8 @@ const ImageGallery = ({ imagesToView, handleModal }) => {
   return <ul className="imageGallery">{gallery}</ul>;
 };
 
-// FilterByName.propTypes = {
-//   onFilterChange: PropTypes.func.isRequired,
-//   filterValue: PropTypes.string.isRequired,
-// };
+ImageGallery.propTypes = {
+  handleModal: PropTypes.func.isRequired,
+  imagesToView: PropTypes.array.isRequired,
+};
 export default ImageGallery;

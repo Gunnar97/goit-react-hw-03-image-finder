@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
   state = {
@@ -35,8 +36,7 @@ class SearchBar extends Component {
   }
 }
 
-// FilterByName.propTypes = {
-//   onFilterChange: PropTypes.func.isRequired,
-//   filterValue: PropTypes.string.isRequired,
-// };
+SearchBar.propTypes = {
+  setQuery: PropTypes.func.isRequired,
+};
 export default SearchBar;

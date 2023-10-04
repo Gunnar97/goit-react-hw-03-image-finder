@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export const Modal = ({ children, onCloseModal }) => {
-  const onBackDropClick = e => {
-    if (e.currentTarget === e.target) {
+  const onBackDropClick = eve => {
+    if (eve.currentTarget === eve.target) {
       onCloseModal();
       cleanup();
     }
   };
-  const onEscKeyPress = e => {
-    if (e.key === 'Escape') {
+  const onEscKeyPress = eve => {
+    if (eve.key === 'Escape') {
       onCloseModal();
       cleanup();
     }
@@ -26,6 +27,11 @@ export const Modal = ({ children, onCloseModal }) => {
       </Content>
     </Wrapper>
   );
+};
+
+Modal.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export const Wrapper = styled.div`
@@ -77,8 +83,4 @@ export const StyledButtonClose = styled.button`
   }
 `;
 
-// FilterByName.propTypes = {
-//   onFilterChange: PropTypes.func.isRequired,
-//   filterValue: PropTypes.string.isRequired,
-// };
 export default Modal;
