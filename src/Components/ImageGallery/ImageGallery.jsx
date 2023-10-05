@@ -1,4 +1,4 @@
-import ImageGalleryItem from 'Components/ImageGalleryItem/ImageGalleryItem';
+import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import React from 'react';
 import PropTypes from 'prop-types';
 

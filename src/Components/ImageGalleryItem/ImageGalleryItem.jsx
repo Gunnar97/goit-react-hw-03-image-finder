@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ImageGalleryItem = props => {
   const onImageGalleryItemClick = () => {
-    props.handleModal(props.item.id, props.item.largeImageURL, props.item.tags);
+    props.handleModal(props.item.largeImageURL, props.item.tags);
   };
   return (
     <li className="imageGalleryItem" onClick={onImageGalleryItemClick}>

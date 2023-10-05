@@ -1,33 +1,34 @@
-import Button from 'Components/Button/Button';
-import ImageGallery from 'Components/ImageGallery/ImageGallery';
-import Loader from 'Components/Loader/Loader';
-import Modal from 'Components/Modal/Modal';
-import SearchBar from 'Components/SearchBar/SearchBar';
-import { getData } from 'Services/api';
+import Button from 'components/Button/Button';
+import ImageGallery from 'components/ImageGallery/ImageGallery';
+import Loader from 'components/Loader/Loader';
+import Modal from 'components/Modal/Modal';
+import SearchBar from 'components/SearchBar/SearchBar';
+import { getData, getPicture } from 'services/api';
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PER_PAGE } from 'utils/constants';
 
 class App extends Component {
   state = {
+    modal: {
+      currentImage: '',
+      isOpen: false,
+      tags: '',
+    },
     images: [],
-    currentPage: '',
-    currentImageId: '',
-    tags: '',
-    page: '',
-    per_page: 12,
-    currentImage: '',
+    page: 1,
     q: '',
-    isOpen: false,
     loading: false,
   };
 
   async componentDidUpdate(_, prevState) {
-    const { page, q, per_page } = this.state;
+    const { page, q } = this.state;
     if (prevState.page !== page || prevState.q !== q) {
       this.setState({ loading: true });
       try {
-        const { hits, totalHits } = await getData({ q, page, per_page });
+        const { hits, totalHits } = await getData({ q, page });
+        // const { hits, totalHits } = await getPicture(q, page);
         this.setState(prevState => ({
           images: [...prevState.images, ...hits],
           totalHits,
@@ -36,7 +37,7 @@ class App extends Component {
           throw new Error('Nothing found. Please, try another query');
         toast.success(
           `Shown ${
-            per_page * page <= totalHits ? per_page * page : totalHits
+            PER_PAGE * page <= totalHits ? PER_PAGE * page : totalHits
           } images from ${totalHits}`,
           {
             position: 'top-right',
@@ -55,15 +56,15 @@ class App extends Component {
   }
   setQuery = q => {
     this.setState({ q, page: 1, images: [] });
-    console.log(this.state.images);
   };
 
-  handleModal = (id, img, tags) => {
+  handleModal = (img, tags) => {
     this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
-      currentImage: img,
-      currentImageId: id,
-      tags,
+      modal: {
+        isOpen: !prevState.isOpen,
+        currentImage: img,
+        tags,
+      },
     }));
   };
 
@@ -72,8 +73,13 @@ class App extends Component {
   };
 
   render() {
-    const { images, isOpen, currentImage, loading, tags, totalHits } =
-      this.state;
+    const {
+      images,
+      modal: { isOpen, currentImage, tags },
+      loading,
+      totalHits,
+    } = this.state;
+
     return (
       <div className="app">
         <SearchBar setQuery={this.setQuery} />
