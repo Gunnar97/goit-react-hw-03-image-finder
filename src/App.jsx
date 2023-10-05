@@ -3,7 +3,7 @@ import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Loader from 'components/Loader/Loader';
 import Modal from 'components/Modal/Modal';
 import SearchBar from 'components/SearchBar/SearchBar';
-import { getData, getPicture } from 'services/api';
+import { getData } from 'services/api';
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
