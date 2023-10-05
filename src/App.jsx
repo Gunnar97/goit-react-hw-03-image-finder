@@ -3,10 +3,10 @@ import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Loader from 'components/Loader/Loader';
 import Modal from 'components/Modal/Modal';
 import SearchBar from 'components/SearchBar/SearchBar';
-import { getData } from 'services/api';
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getData } from 'services/api';
 import { PER_PAGE } from 'utils/constants';
 
 class App extends Component {
