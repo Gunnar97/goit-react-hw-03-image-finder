@@ -28,7 +28,6 @@ class App extends Component {
       this.setState({ loading: true });
       try {
         const { hits, totalHits } = await getData({ q, page });
-        // const { hits, totalHits } = await getPicture(q, page);
         this.setState(prevState => ({
           images: [...prevState.images, ...hits],
           totalHits,
