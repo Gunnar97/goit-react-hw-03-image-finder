@@ -4,10 +4,10 @@ import Loader from 'component/Loader/Loader';
 import SearchBar from 'component/SearchBar/SearchBar';
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { getData } from 'helper/api';
 import { PER_PAGE } from 'utils/constants';
 import Modal from 'component/Modal/Modal';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
   state = {
@@ -60,7 +60,7 @@ class App extends Component {
   handleModal = (img, tags) => {
     this.setState(prevState => ({
       modal: {
-        isOpen: !prevState.isOpen,
+        isOpen: !prevState.modal.isOpen,
         currentImage: img,
         tags,
       },
