@@ -6,7 +6,7 @@ import SearchBar from 'components/SearchBar/SearchBar';
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getData } from 'services/api';
+import { getData } from 'helper/api';
 import { PER_PAGE } from 'utils/constants';
 
 class App extends Component {
