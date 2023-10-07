@@ -114,13 +114,11 @@ class Modal extends Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, onCloseModal } = this.props;
     return (
       <Wrapper onClick={this.onBackDropClick}>
         <Content>
-          <StyledButtonClose onClick={this.props.onCloseModal}>
-            Close
-          </StyledButtonClose>
+          <StyledButtonClose onClick={onCloseModal}>Close</StyledButtonClose>
           <Childrens>{children}</Childrens>
         </Content>
       </Wrapper>
